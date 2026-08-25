@@ -2,7 +2,9 @@
 
 A no-build browser vertical slice for a systemic co-op pest-control game.
 
-**Public playtest:** The GitHub Pages link is published from the root of `main` and should remain the first link in this README once the repository is created.
+## [Play the public prototype](https://dumb-tony.github.io/pest-control/)
+
+The static playtest is published directly from the root of `main`; no install, account, or build step is required.
 
 ## Play
 
