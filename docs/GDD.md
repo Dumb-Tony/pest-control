@@ -190,13 +190,15 @@ Included now:
 - Preparation phase and live utility-based room-to-room simulation
 - One main capture route and a multi-step occupied-room escape cascade
 - Property damage, customer trust, budget, event log, win/fail outcomes
+- Post-capture exclusion patch and room-specific HEPA cleanup
+- Reversible preparation placement, procedural sound cues, job-progress tracker, and share/replay controls
 - Restart and a compact tutorial embedded in the work order
 
-Explicitly deferred: avatar movement, cleanup/exclusion minigames, inventory weight, multiple animals, customers moving in-world, procedural generation, persistence, networking, save data, 3D physics, and final audio.
+Explicitly deferred: avatar movement, deep repair minigames, inventory weight, multiple animals, customers moving in-world, procedural generation, persistence, networking, save data, 3D physics, and final authored audio.
 
 ## Technical approach
 
-The prototype is plain HTML/CSS/JavaScript and Canvas 2D with no dependencies or build step. A fixed 960×600 logical canvas scales to available width. Simulation uses a small finite state machine plus timed animal decisions. Render and simulation are separated conceptually in one file for fast iteration; the next refactor splits data, reducer/state, behavior, renderer, input, and audio.
+The prototype is plain HTML/CSS/JavaScript and Canvas 2D with no dependencies or build step. A fixed 960×600 logical canvas scales to available width. Simulation uses a finite state machine plus timed animal decisions. Lightweight sound cues are synthesized with Web Audio and duplicated in captions/logs. Render and simulation are separated conceptually in one file for fast iteration; the next refactor splits data, reducer/state, behavior, renderer, input, and audio.
 
 Behavioral variation uses a deterministic seeded PRNG. A `?seed=` query parameter is displayed in the HUD and reproduces decision variation for shared playtests and debugging. Game state is serializable except transient animation time, preparing for replay logging and later multiplayer authority.
 
@@ -234,7 +236,7 @@ Content data should become JSON/ScriptableObjects with stable IDs. Behavior read
 
 ## First playable vertical slice
 
-**“Something in the Attic”**: Mrs. Alvarez reports night scratching and a damaged soffit. The player investigates a two-floor cutaway, discovers large hand-like tracks, dark coarse fur, nocturnal noise, and a pried vent; chooses raccoon; places a baited live trap in the garage and blocks dangerous routes; then begins containment.
+**“Something in the Attic”**: Mrs. Alvarez reports night scratching and a damaged soffit. The player investigates a two-floor cutaway, discovers large hand-like tracks, dark coarse fur, nocturnal noise, and a pried vent; chooses raccoon; places a baited live trap in the garage and blocks dangerous routes; begins containment; then seals the soffit and cleans the affected room before submitting the work order.
 
 The raccoon seeks the safest perceived exit. A garage trap plus a nursery barrier captures it with low damage. Bait alone does not override an apparently open escape route: leaving the nursery route open drives a ceiling breach, followed by the hall and kitchen. The player can recover by blocking the kitchen route while the animal is still upstairs, redirecting it to the garage trap; otherwise it raids the kitchen and escapes through the front door. Final grading explains the chain.
 
@@ -286,3 +288,6 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-25:** Reduced bait utility after playtesting showed traps were auto-solving poor preparation. Bait now works only when barriers make the capture route competitive.
 - **2026-08-25:** Established `C:\Dev\pest-control` as the canonical checkout and a public GitHub Pages deployment as the standing playtest channel.
 - **2026-08-25:** Added shareable seeded jobs through `?seed=`; behavioral tie variation is deterministic and the active seed is visible in the HUD and field log.
+- **2026-08-25:** Completed the first job's exclusion/cleanup closeout instead of ending on capture. Capture now transitions to property restoration, and final grading requires both tasks.
+- **2026-08-25:** Added reversible prep placement after playtest friction showed a mistaken click could invalidate an otherwise useful run.
+- **2026-08-25:** Fixed restart to preserve one animation loop and changed the field log to text-node rendering so user-supplied seeds cannot become HTML.

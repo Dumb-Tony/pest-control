@@ -10,8 +10,13 @@
 - [ ] Trap and barrier placement update canvas, counts, and budget.
 - [ ] Containment starts only after a trap is placed.
 - [ ] Raccoon moves, event log updates, and meters react.
-- [ ] Capture and escape each show a result with restart.
+- [ ] Capture transitions to closeout rather than directly showing results.
+- [ ] Exclusion patch works only on the outside soffit target.
+- [ ] HEPA cleanup targets the attic after a clean capture and nursery after a breach.
+- [ ] Completing both closeout tasks enables job submission and results.
+- [ ] Escape shows a result with same-seed and new-seed replay choices.
 - [ ] `R` resets all meters, placements, evidence, and simulation timers.
+- [ ] Repeated restarts do not accelerate or duplicate animal decisions.
 
 ## Acceptance routes
 
@@ -23,6 +28,7 @@
 - [ ] Start containment.
 - [ ] Raccoon routes from attic toward garage and is captured.
 - [ ] Final state shows capture with low damage and high trust.
+- [ ] Seal the outside entry, clean the attic, and submit for grade A.
 
 ### Cascading escape
 
@@ -63,6 +69,9 @@
 - [ ] Every damage/trust change has a corresponding log message.
 - [ ] Repeating the same actions with the same `?seed=` produces the same route decisions.
 - [ ] A long or unusual seed is safely shortened in the HUD and does not affect layout.
+- [ ] HTML-like text in `?seed=` renders as literal text and never creates markup.
+- [ ] Sound off suppresses subsequent procedural cues without hiding captions.
+- [ ] Copy job link copies the current seeded URL or displays it as fallback text.
 
 ## Browser matrix
 

@@ -13,14 +13,16 @@
 - [x] Capture, escape, property damage, trust, and budget results
 - [x] Restart and concise instructions
 - [x] Replace native randomness with seeded PRNG and show/share seed through `?seed=`
-- [ ] Add visualized sound cues and simple procedural audio
+- [x] Add visualized sound cues and simple procedural audio
+- [x] Add post-capture exclusion and contamination cleanup closeout
+- [x] Add reversible preparation placement and share/replay controls
 - [ ] Make barriers target door edges explicitly rather than room zones
 - [ ] Add one automated simulation test per acceptance route
 
 ### P1 — validate breadth
 
-- [ ] Add post-capture exclusion: identify and seal soffit entry
-- [ ] Add contamination cleanup with time/supply tradeoff
+- [x] Add post-capture exclusion: identify and seal soffit entry
+- [x] Add contamination cleanup with time/supply tradeoff
 - [ ] Add rat behavior: group count uncertainty, wall routes, trap learning
 - [ ] Add second property topology (diner kitchen + basement)
 - [ ] Add resident/dog incident card
@@ -126,7 +128,7 @@ All IDs are stable lowercase strings. Saves reference IDs, never array positions
 2. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
 3. Render barriers on exact door edges and show “weakening” before failure.
 4. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
-5. Add exclusion/cleanup closeout: seal soffit, bag contamination, choose when to leave.
+5. Add a two-choice closeout tradeoff: leave early for time or finish optional restoration for trust.
 6. Run five blind tests; record first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
 7. Update GDD decision log from findings before adding the rat job.
 

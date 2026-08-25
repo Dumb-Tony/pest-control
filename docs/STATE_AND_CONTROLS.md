@@ -9,7 +9,11 @@
 | `1` / Inspect button | Select inspect tool | Investigate |
 | `2` / Trap button | Select live trap | Prepare or contain |
 | `3` / Barrier button | Select barrier | Prepare or contain |
+| `4` / Exclusion patch | Select soffit repair | Closeout |
+| `5` / HEPA cleanup | Select decontamination | Closeout |
 | Click room | Place selected tool | Prepare or contain; placement limit/cost applies |
+| Click placed tool location | Remove/refund or move equipment | Prepare only |
+| Click highlighted closeout target | Perform repair or cleanup | Closeout; correct tool/room required |
 | `Space` / Start button | Begin containment | Prepare; diagnosis and trap required |
 | `R` / Restart button | Reset work order | Any phase |
 
@@ -26,12 +30,14 @@ BRIEFING
                  ├─ place/move tools → PREPARE
                  └─ start → CONTAIN
                       ├─ place emergency barrier → CONTAIN
-                      ├─ animal enters armed trap → RESOLVED_CAPTURE
+                      ├─ animal enters armed trap → CLOSEOUT
+                      │    ├─ seal entry + clean affected room → READY_TO_SUBMIT
+                      │    └─ submit job → RESOLVED_CAPTURE
                       ├─ animal exits property → RESOLVED_ESCAPE
                       └─ trust or damage threshold → RESOLVED_ABORT
 ```
 
-Phase changes are explicit commands. UI visibility is derived from phase; it does not own game rules.
+Phase changes are explicit commands. UI visibility is derived from phase; it does not own game rules. Capture is not job completion: exclusion and cleanup are required before final scoring.
 
 ## Animal state machine
 

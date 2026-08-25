@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10272b">
   <title>Small Town Pest Control — Something in the Attic</title>
-  <link rel="stylesheet" href="styles.css?v=143e489">
+  <link rel="stylesheet" href="styles.css?v=friend-ready-1">
 </head>
 <body>
   <main class="app-shell">
@@ -14,7 +14,11 @@
         <p class="eyebrow">MILLHAVEN ANIMAL &amp; PROPERTY SERVICES</p>
         <h1>Something in the Attic</h1>
       </div>
-      <div class="job-chip"><span>WORK ORDER</span><strong>#0147</strong></div>
+      <div class="header-actions">
+        <button id="soundToggle" class="header-button" aria-pressed="true">Sound on</button>
+        <button id="shareButton" class="header-button">Copy job link</button>
+        <div class="job-chip"><span>WORK ORDER</span><strong>#0147</strong></div>
+      </div>
     </header>
 
     <section class="status-strip" aria-label="Job status">
@@ -24,6 +28,15 @@
       <div><span>Supply budget</span><strong id="budgetLabel">$240</strong></div>
       <div><span>Job seed</span><strong id="seedLabel">0147</strong></div>
     </section>
+
+    <ol id="phaseTrack" class="phase-track" aria-label="Job progress">
+      <li data-phase="briefing">Brief</li>
+      <li data-phase="investigate">Inspect</li>
+      <li data-phase="diagnose">Diagnose</li>
+      <li data-phase="prepare">Prepare</li>
+      <li data-phase="contain">Contain</li>
+      <li data-phase="closeout">Close out</li>
+    </ol>
 
     <div class="workspace">
       <section class="board-panel" aria-label="Interactive cutaway house">
@@ -57,6 +70,8 @@
             <button data-tool="inspect"><kbd>1</kbd><span>Inspect</span><small>read evidence</small></button>
             <button data-tool="trap"><kbd>2</kbd><span>Live trap</span><small>$55 · attracts nearby</small></button>
             <button data-tool="barrier"><kbd>3</kbd><span>Barrier</span><small>$25 · blocks room route</small></button>
+            <button data-tool="seal"><kbd>4</kbd><span>Exclusion patch</span><small>$35 · seal entry</small></button>
+            <button data-tool="clean"><kbd>5</kbd><span>HEPA cleanup</span><small>$30 · decontaminate</small></button>
           </div>
           <p class="inventory" id="inventoryLabel">Trap 0/1 · Barriers 0/3</p>
         </section>
@@ -71,7 +86,7 @@
     </div>
 
     <footer>
-      <p><strong>Controls:</strong> click to inspect/place · 1 inspect · 2 trap · 3 barrier · Space start · R restart</p>
+      <p id="shareStatus" aria-live="polite"><strong>Controls:</strong> click to inspect/place · 1–5 tools · Space start · R restart</p>
       <button id="restartButton" class="text-button">Restart work order</button>
     </footer>
   </main>
@@ -83,10 +98,13 @@
       <h2 id="resultTitle">Animal secured</h2>
       <p id="resultSummary"></p>
       <div id="resultStats" class="result-stats"></div>
-      <button id="modalRestart" class="primary">Run the job again</button>
+      <div class="result-actions">
+        <button id="modalRestart" class="primary">Run same job</button>
+        <button id="newSeedButton">Generate new job</button>
+      </div>
     </div>
   </div>
 
-  <script src="game.js?v=143e489"></script>
+  <script src="game.js?v=friend-ready-1"></script>
 </body>
 </html>

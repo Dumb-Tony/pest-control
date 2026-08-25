@@ -15,10 +15,13 @@ Open `index.html` directly in a modern browser, or serve this folder with any st
 3. Place a trap and barriers during preparation.
 4. Start containment, then react to the raccoon's route.
 5. Capture it before property damage or customer trust collapses.
+6. Seal the entry point, clean the affected room, and submit the completed job.
 
-Mouse controls are primary. Keyboard shortcuts: `1` inspect, `2` trap, `3` barrier, `Space` starts containment, `R` restarts. Buttons and instructions are also exposed as HTML for keyboard and screen-reader use.
+Mouse controls are primary. Keyboard shortcuts: `1` inspect, `2` trap, `3` barrier, `4` exclusion patch, `5` HEPA cleanup, `Space` starts containment, and `R` restarts. Click placed equipment during preparation to undo or move it. Buttons and instructions are also exposed as HTML for keyboard and screen-reader use.
 
 Add `?seed=your-name` to the playtest URL to reproduce and share the same behavioral variation, for example `https://dumb-tony.github.io/pest-control/?seed=garage-night`.
+
+Use **Copy job link** to send the current seed to a friend. The sound toggle controls lightweight procedural cues; every cue also has a visible caption or field-log event.
 
 ## Project map
 
@@ -32,7 +35,7 @@ Add `?seed=your-name` to the playtest URL to reproduce and share the same behavi
 
 ## Prototype intent
 
-This slice tests the risky part of the concept: whether reading evidence and shaping an animal's route creates legible, emergent chaos. It intentionally postpones character movement, online multiplayer, procedural houses, economy, and 3D physics.
+This slice tests the complete solo job: read evidence, shape the animal's route, recover from containment failures, remove it, seal the opening, clean contamination, and settle the job. It intentionally postpones character movement, online multiplayer, procedural houses, persistent economy, and 3D physics.
 
 ## Repository and deployment policy
 
