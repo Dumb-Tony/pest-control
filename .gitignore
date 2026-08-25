@@ -1,0 +1,25 @@
+# Operating system and editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs, local settings, and secrets
+*.log
+.env
+.env.*
+!.env.example
+*.local
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+tmp/
+work/
+

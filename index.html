@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10272b">
+  <title>Small Town Pest Control — Something in the Attic</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">MILLHAVEN ANIMAL &amp; PROPERTY SERVICES</p>
+        <h1>Something in the Attic</h1>
+      </div>
+      <div class="job-chip"><span>WORK ORDER</span><strong>#0147</strong></div>
+    </header>
+
+    <section class="status-strip" aria-label="Job status">
+      <div><span>Phase</span><strong id="phaseLabel">Briefing</strong></div>
+      <div><span>Property damage</span><strong id="damageLabel">$0</strong></div>
+      <div><span>Customer trust</span><strong id="trustLabel">100</strong></div>
+      <div><span>Supply budget</span><strong id="budgetLabel">$240</strong></div>
+    </section>
+
+    <div class="workspace">
+      <section class="board-panel" aria-label="Interactive cutaway house">
+        <canvas id="gameCanvas" width="960" height="600" aria-label="Cutaway house. Use the tool buttons and click highlighted rooms or evidence."></canvas>
+        <div class="canvas-caption" id="canvasCaption">Customer reports heavy scratching above the second floor after midnight.</div>
+      </section>
+
+      <aside class="work-order">
+        <section>
+          <p class="section-kicker">CURRENT OBJECTIVE</p>
+          <h2 id="objective">Review the call</h2>
+          <p id="instruction">Mrs. Alvarez heard heavy movement above the nursery. Find out what entered the house, prepare a safe route, and remove it.</p>
+        </section>
+
+        <section id="actionPanel" class="action-panel">
+          <button id="primaryAction" class="primary">Accept job</button>
+        </section>
+
+        <section id="diagnosisPanel" class="diagnosis-panel" hidden>
+          <p class="section-kicker">LOG DIAGNOSIS</p>
+          <div class="diagnosis-grid">
+            <button data-species="rat"><span>Rat</span><small>chewing, small tracks</small></button>
+            <button data-species="squirrel"><span>Squirrel</span><small>daytime, light movement</small></button>
+            <button data-species="raccoon"><span>Raccoon</span><small>heavy, climbing, dexterous</small></button>
+          </div>
+        </section>
+
+        <section id="toolsPanel" hidden>
+          <p class="section-kicker">TOOL BELT</p>
+          <div class="tool-grid">
+            <button data-tool="inspect"><kbd>1</kbd><span>Inspect</span><small>read evidence</small></button>
+            <button data-tool="trap"><kbd>2</kbd><span>Live trap</span><small>$55 · attracts nearby</small></button>
+            <button data-tool="barrier"><kbd>3</kbd><span>Barrier</span><small>$25 · blocks room route</small></button>
+          </div>
+          <p class="inventory" id="inventoryLabel">Trap 0/1 · Barriers 0/3</p>
+        </section>
+
+        <section class="evidence-section">
+          <div class="section-row"><p class="section-kicker">FIELD LOG</p><span id="evidenceCount">0 / 4 clues</span></div>
+          <ol id="eventLog" class="event-log" aria-live="polite">
+            <li>22:14 — Dispatch: heavy attic noise, damaged soffit.</li>
+          </ol>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <p><strong>Controls:</strong> click to inspect/place · 1 inspect · 2 trap · 3 barrier · Space start · R restart</p>
+      <button id="restartButton" class="text-button">Restart work order</button>
+    </footer>
+  </main>
+
+  <div id="resultModal" class="modal" hidden>
+    <div class="result-card" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <p class="eyebrow">JOB REPORT</p>
+      <div class="grade" id="resultGrade">A</div>
+      <h2 id="resultTitle">Animal secured</h2>
+      <p id="resultSummary"></p>
+      <div id="resultStats" class="result-stats"></div>
+      <button id="modalRestart" class="primary">Run the job again</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
