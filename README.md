@@ -18,6 +18,8 @@ Open `index.html` directly in a modern browser, or serve this folder with any st
 
 Mouse controls are primary. Keyboard shortcuts: `1` inspect, `2` trap, `3` barrier, `Space` starts containment, `R` restarts. Buttons and instructions are also exposed as HTML for keyboard and screen-reader use.
 
+Add `?seed=your-name` to the playtest URL to reproduce and share the same behavioral variation, for example `https://dumb-tony.github.io/pest-control/?seed=garage-night`.
+
 ## Project map
 
 - `index.html` — accessible application shell

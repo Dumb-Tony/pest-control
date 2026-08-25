@@ -61,6 +61,8 @@
 - [ ] Restart cannot receive a late timer from the previous run.
 - [ ] Capture requires animal and armed trap in same room.
 - [ ] Every damage/trust change has a corresponding log message.
+- [ ] Repeating the same actions with the same `?seed=` produces the same route decisions.
+- [ ] A long or unusual seed is safely shortened in the HUD and does not affect layout.
 
 ## Browser matrix
 
@@ -77,4 +79,3 @@
 3. When something went wrong, what caused it?
 4. Did you notice a way to recover during containment?
 5. Which action felt like pest-control work rather than a generic puzzle?
-

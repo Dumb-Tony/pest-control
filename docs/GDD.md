@@ -198,7 +198,7 @@ Explicitly deferred: avatar movement, cleanup/exclusion minigames, inventory wei
 
 The prototype is plain HTML/CSS/JavaScript and Canvas 2D with no dependencies or build step. A fixed 960×600 logical canvas scales to available width. Simulation uses a small finite state machine plus timed animal decisions. Render and simulation are separated conceptually in one file for fast iteration; the next refactor splits data, reducer/state, behavior, renderer, input, and audio.
 
-Deterministic seeded randomness is the first technical follow-up. Current behavior is rules-based with limited native randomness. Game state is serializable except transient animation time, preparing for replay logging and later multiplayer authority.
+Behavioral variation uses a deterministic seeded PRNG. A `?seed=` query parameter is displayed in the HUD and reproduces decision variation for shared playtests and debugging. Game state is serializable except transient animation time, preparing for replay logging and later multiplayer authority.
 
 ## Data and state architecture
 
@@ -211,6 +211,7 @@ GameState
   evidence: discovered IDs, confidence
   diagnosis: selected species
   placements: traps[], barriers[]
+  seed: public label, PRNG state, decision count
   animal: roomId, stress, targetId, captured, escaped
   house: rooms{}, edges{}, incidents{}
   log: timestamped events[]
@@ -284,3 +285,4 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-25:** Deferred cleanup/exclusion to preserve a complete five-minute core loop; closeout is the first major feature after behavior legibility.
 - **2026-08-25:** Reduced bait utility after playtesting showed traps were auto-solving poor preparation. Bait now works only when barriers make the capture route competitive.
 - **2026-08-25:** Established `C:\Dev\pest-control` as the canonical checkout and a public GitHub Pages deployment as the standing playtest channel.
+- **2026-08-25:** Added shareable seeded jobs through `?seed=`; behavioral tie variation is deterministic and the active seed is visible in the HUD and field log.

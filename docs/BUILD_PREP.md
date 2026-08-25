@@ -12,7 +12,7 @@
 - [x] Attic-to-nursery-to-kitchen escape cascade
 - [x] Capture, escape, property damage, trust, and budget results
 - [x] Restart and concise instructions
-- [ ] Replace native randomness with seeded PRNG and show seed
+- [x] Replace native randomness with seeded PRNG and show/share seed through `?seed=`
 - [ ] Add visualized sound cues and simple procedural audio
 - [ ] Make barriers target door edges explicitly rather than room zones
 - [ ] Add one automated simulation test per acceptance route
@@ -122,16 +122,14 @@ All IDs are stable lowercase strings. Saves reference IDs, never array positions
 
 ## Next implementation tasks
 
-1. Add a tiny seeded PRNG and expose `?seed=` so route failures reproduce.
-2. Extract the adjacency graph and raccoon scoring into pure functions.
-3. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
-4. Render barriers on exact door edges and show “weakening” before failure.
-5. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
-6. Add exclusion/cleanup closeout: seal soffit, bag contamination, choose when to leave.
-7. Run five blind tests; record first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
-8. Update GDD decision log from findings before adding the rat job.
+1. Extract the adjacency graph and raccoon scoring into pure functions.
+2. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
+3. Render barriers on exact door edges and show “weakening” before failure.
+4. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
+5. Add exclusion/cleanup closeout: seal soffit, bag contamination, choose when to leave.
+6. Run five blind tests; record first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
+7. Update GDD decision log from findings before adding the rat job.
 
 ## Telemetry for playtests
 
 Log seed, phase durations, evidence order, diagnosis, placements, every route score/choice, damage events, emergency barriers, capture/escape, final meters, restart count, and whether instructions were opened. Store locally only during prototype testing and offer export as JSON.
-

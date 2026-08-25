@@ -8,6 +8,7 @@
     damage: document.getElementById('damageLabel'),
     trust: document.getElementById('trustLabel'),
     budget: document.getElementById('budgetLabel'),
+    seed: document.getElementById('seedLabel'),
     objective: document.getElementById('objective'),
     instruction: document.getElementById('instruction'),
     caption: document.getElementById('canvasCaption'),
@@ -56,14 +57,35 @@
 
   let state;
 
+  function hashSeed(value) {
+    let hash = 2166136261;
+    for (const char of value) {
+      hash ^= char.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0 || 1;
+  }
+
+  const suppliedSeed = new URLSearchParams(location.search).get('seed');
+  const jobSeed = (suppliedSeed || '0147').slice(0, 24);
+
+  function seededRandom() {
+    state.rngState = (state.rngState + 0x6D2B79F5) >>> 0;
+    let value = state.rngState;
+    value = Math.imul(value ^ value >>> 15, value | 1);
+    value ^= value + Math.imul(value ^ value >>> 7, value | 61);
+    return ((value ^ value >>> 14) >>> 0) / 4294967296;
+  }
+
   function freshState() {
     return {
       phase:'briefing', selectedTool:'inspect', found:[], diagnosis:null,
+      seed:jobSeed, rngState:hashSeed(jobSeed), decisionCount:0,
       traps:[], barriers:[], damage:0, trust:100, budget:240,
       animal:{ room:'attic', previous:null, stress:10, captured:false, escaped:false,
         moving:false, from:'attic', to:'attic', moveStart:0, moveDuration:650 },
       simStarted:0, nextDecision:0, incidents:{ nursery:false, kitchen:false },
-      log:[{ time:'22:14', text:'Dispatch: heavy attic noise, damaged soffit.' }],
+      log:[{ time:'22:14', text:`Dispatch: heavy attic noise, damaged soffit. Job seed ${jobSeed}.` }],
       hoverRoom:null, hoverEvidence:null, resolved:false
     };
   }
@@ -176,8 +198,10 @@
       updateUI();
       return;
     }
-    options.sort((x,y) => scoreDestination(a.room,y) - scoreDestination(a.room,x));
-    const target = options[0];
+    const ranked = options.map(id => ({ id, score:scoreDestination(a.room,id) + seededRandom()*6 }));
+    ranked.sort((x,y) => y.score - x.score || x.id.localeCompare(y.id));
+    const target = ranked[0].id;
+    state.decisionCount += 1;
     a.previous = a.room; a.from = a.room; a.to = target; a.moving = true; a.moveStart = now;
     ui.caption.textContent = `Movement: ${rooms[a.room].label.toLowerCase()} → ${rooms[target].label.toLowerCase()}.`;
   }
@@ -244,6 +268,7 @@
     ui.damage.textContent = `$${state.damage}`;
     ui.trust.textContent = Math.max(0, state.trust);
     ui.budget.textContent = `$${state.budget}`;
+    ui.seed.textContent = state.seed;
     ui.evidenceCount.textContent = `${state.found.length} / ${evidence.length} clues`;
     ui.inventory.textContent = `Trap ${state.traps.length}/1 · Barriers ${state.barriers.length}/3`;
     ui.log.innerHTML = state.log.map(item => `<li><strong>${item.time}</strong> — ${item.text}</li>`).join('');
