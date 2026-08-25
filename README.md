@@ -6,6 +6,8 @@ A no-build browser vertical slice for a systemic co-op pest-control game.
 
 The static playtest is published directly from the root of `main`; no install, account, or build step is required.
 
+Sending it to someone? Share the [short friend playtest guide](docs/PLAYTEST_GUIDE.md) with the game link so feedback includes the seed and final job report.
+
 ## Play
 
 Open `index.html` directly in a modern browser, or serve this folder with any static web server. No packages or build step are required.
@@ -32,6 +34,7 @@ Use **Copy job link** to send the current seed to a friend. The sound toggle con
 - `docs/BUILD_PREP.md` — backlog, milestones, acceptance criteria, architecture, and implementation tasks
 - `docs/STATE_AND_CONTROLS.md` — controls and state-machine specification
 - `docs/QA_CHECKLIST.md` — manual test plan
+- `docs/PLAYTEST_GUIDE.md` — spoiler-light instructions and feedback questions for friends
 
 ## Prototype intent
 

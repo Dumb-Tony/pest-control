@@ -44,6 +44,7 @@
 
 - [ ] Allow nursery breach.
 - [ ] During containment, place an emergency barrier ahead of the raccoon.
+- [ ] The nursery breach leaves at least 2.5 seconds to read the warning and block the kitchen.
 - [ ] Animal re-evaluates and chooses another legal route.
 - [ ] Capture remains possible after at least one incident.
 

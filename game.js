@@ -126,7 +126,8 @@
     if(a.room==='kitchen'&&!state.incidents.kitchen){state.incidents.kitchen=true;state.damage+=125;state.trust-=16;log('KITCHEN RAID: food and dishes hit the floor. Damage +$125, trust −16.');playCue('breach');}
     if(state.traps.includes(a.room)){if(state.diagnosis==='raccoon'){a.captured=true;log(`Trap secured in ${rooms[a.room].label.toLowerCase()}.`);beginCloseout();return;}state.traps=[];state.damage+=35;state.trust-=8;a.stress+=22;log('WRONG-SIZE TRAP: the door snaps early. The animal bolts; damage +$35, trust −8.');playCue('breach');}
     if(a.room==='outside'){a.escaped=true;log('The raccoon reaches the front walk and disappears into the neighborhood.');resolve(false);return;}
-    if(state.damage>=650||state.trust<=0){log('The customer stops the job after escalating damage.');resolve(false);return;}state.nextDecision=now+900;updateUI();
+    if(state.damage>=650||state.trust<=0){log('The customer stops the job after escalating damage.');resolve(false);return;}
+    state.nextDecision=now+(a.room==='nursery'?2600:900);updateUI();
   }
   function stat(label,value){const box=document.createElement('div'),small=document.createElement('small'),strong=document.createElement('strong');small.textContent=label;strong.textContent=value;box.append(small,strong);return box;}
   function resolve(captured){

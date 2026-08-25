@@ -291,3 +291,4 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-25:** Completed the first job's exclusion/cleanup closeout instead of ending on capture. Capture now transitions to property restoration, and final grading requires both tasks.
 - **2026-08-25:** Added reversible prep placement after playtest friction showed a mistaken click could invalidate an otherwise useful run.
 - **2026-08-25:** Fixed restart to preserve one animation loop and changed the field log to text-node rendering so user-supplied seeds cannot become HTML.
+- **2026-08-25:** Increased the post-nursery-breach reaction window to 2.6 seconds after hands-on testing showed 0.9 seconds was too short to read the warning and deploy an emergency barrier.
