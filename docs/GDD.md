@@ -160,7 +160,7 @@ This project can share a universe with other ordinary-work games through recurri
 
 Long-term: chunky, tactile 3D with readable silhouettes, slightly exaggerated building cutaways, worn workwear, and grounded materials. Color carries systems: amber = uncertain evidence, cyan = crew intent, red = active escape/damage, green = secure/captured. Animals are expressive through posture and motion, not humanized faces.
 
-The browser slice uses a clean municipal-work-order look, a dark cutaway against warm room colors, bold route lines, diagrammatic evidence, and restrained screen shake. It establishes readability rather than final asset style.
+The browser slice uses a **cozy cutaway diorama inside a municipal field manual**. The property sits in a moonlit small-town yard with chunky roof, room, furniture, and exterior silhouettes. Warm domestic rooms contrast with cool civic UI colors; cream paper, stamped orange actions, dark green workwear tones, and imperfect ink-like shadows make the interface feel handled rather than digital-clean. Evidence glows amber, completed work turns green, danger and failed containment use red, and route intent stays orange. Room props tell the job story before text does: crib and mobile, garage bench and storage, kitchen cabinets and breakables, damaged soffit and porch.
 
 ## Audio direction
 
@@ -292,3 +292,4 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-25:** Added reversible prep placement after playtest friction showed a mistaken click could invalidate an otherwise useful run.
 - **2026-08-25:** Fixed restart to preserve one animation loop and changed the field log to text-node rendering so user-supplied seeds cannot become HTML.
 - **2026-08-25:** Increased the post-nursery-breach reaction window to 2.6 seconds after hands-on testing showed 0.9 seconds was too short to read the warning and deploy an emergency barrier.
+- **2026-08-27:** Established the browser art target as “cozy cutaway diorama inside a municipal field manual.” Added small-town exterior context, room-specific prop storytelling, dimensional house construction, a stronger raccoon silhouette, tactile work-order styling, and glow/shadow hierarchy without introducing external assets or changing gameplay hitboxes.
