@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10272b">
   <title>Small Town Pest Control — Something in the Attic</title>
-  <link rel="stylesheet" href="styles.css?v=clay-3d-2">
+  <link rel="stylesheet" href="styles.css?v=interior-1">
   <script type="importmap">
   {
     "imports": {
@@ -48,7 +48,14 @@
     <div class="workspace">
       <section class="board-panel" aria-label="Interactive three-dimensional house">
         <div class="viewport-badge"><span>FIELD CAMERA</span><strong>LIVE</strong></div>
-        <canvas id="gameCanvas" aria-label="Stylized three-dimensional house. Move with WASD, drag to turn the camera, and tap evidence or room floors."></canvas>
+        <canvas id="gameCanvas" aria-label="Stylized three-dimensional house interior. Move with WASD, drag to turn the camera, tap nearby evidence or floors, and use E at the attic ladder."></canvas>
+        <div class="move-pad" aria-label="Movement controls">
+          <button data-move="w" aria-label="Move forward">▲</button>
+          <button data-move="a" aria-label="Move left">◀</button>
+          <button id="climbButton" aria-label="Use attic ladder">E</button>
+          <button data-move="d" aria-label="Move right">▶</button>
+          <button data-move="s" aria-label="Move backward">▼</button>
+        </div>
         <div class="canvas-caption" id="canvasCaption">Customer reports heavy scratching above the second floor after midnight.</div>
       </section>
 
@@ -94,7 +101,7 @@
     </div>
 
     <footer>
-      <p id="shareStatus" aria-live="polite"><strong>Controls:</strong> WASD move · drag look · tap interact · 1–5 tools · Space start · R restart</p>
+      <p id="shareStatus" aria-live="polite"><strong>Controls:</strong> WASD move · drag look · tap interact · E ladder · 1–5 tools · Space start · R restart</p>
       <button id="restartButton" class="text-button">Restart work order</button>
     </footer>
   </main>
@@ -113,6 +120,6 @@
     </div>
   </div>
 
-  <script type="module" src="game.js?v=clay-3d-4"></script>
+  <script type="module" src="game.js?v=interior-6"></script>
 </body>
 </html>

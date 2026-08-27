@@ -4,6 +4,11 @@
 
 - [ ] Three.js scene loads from the public HTTPS URL without a blank viewport or console error.
 - [ ] Technician is visible; WASD/arrows move; dragging turns the follow camera.
+- [ ] Technician faces the direction of movement and shows their backpack to the follow camera when moving forward.
+- [ ] Porch doorway, interior walls, and widened room connections allow continuous traversal without walking through walls.
+- [ ] Garage ladder can be climbed with `E`, its prompt, and the center touch button; the same controls return downstairs.
+- [ ] Downstairs labels/evidence are hidden in the attic and attic targets cannot be used from downstairs.
+- [ ] Evidence and equipment interactions reject attempts made from too far away or the wrong floor.
 - [ ] Clay lighting, room signs, and evidence remain readable at desktop and phone widths.
 - [ ] A room sign selects its labeled room even when elevated or foreground geometry overlaps it.
 - [ ] Briefing advances to investigation.

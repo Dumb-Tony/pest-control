@@ -5,21 +5,23 @@
 | Input | Action | Phase guard |
 |---|---|---|
 | `WASD` / arrow keys | Move technician relative to camera | Any active phase |
+| On-screen direction pad | Hold or tap to move | Any active phase |
 | Pointer drag | Turn over-the-shoulder camera | Any phase |
-| Click/tap evidence marker | Inspect clue | Investigate |
+| Click/tap nearby evidence marker | Inspect clue | Investigate; same floor and within reach |
+| `E` / center pad button / ladder prompt | Climb attic ladder up or down | Within reach of garage ladder or attic opening |
 | Click diagnosis card | Commit species | Diagnose |
 | `1` / Inspect button | Select inspect tool | Investigate |
 | `2` / Trap button | Select live trap | Prepare or contain |
 | `3` / Barrier button | Select barrier | Prepare or contain |
 | `4` / Exclusion patch | Select soffit repair | Closeout |
 | `5` / HEPA cleanup | Select decontamination | Closeout |
-| Click/tap room sign or floor | Place selected tool | Prepare or contain; placement limit/cost applies |
+| Click/tap nearby room sign or floor | Place selected tool | Prepare or contain; technician must be in that room |
 | Click placed tool location | Remove/refund or move equipment | Prepare only |
 | Click highlighted closeout target | Perform repair or cleanup | Closeout; correct tool/room required |
 | `Space` / Start button | Begin containment | Prepare; diagnosis and trap required |
 | `R` / Restart button | Reset work order | Any phase |
 
-Room signs are deliberate interaction targets when elevated attic geometry or foreground walls overlap a rear room on screen. Future controller mapping: move (left stick), look (right stick), interact (south), primary tool (right trigger), alternate/rotate (left trigger), ping (D-pad up), tool belt (radial), carry/drop (west), crouch (east), sprint (stick press).
+Room and evidence labels are level-aware and hidden through floors. The attic cannot be targeted from downstairs; the player must use the ladder. Future controller mapping: move (left stick), look (right stick), interact/climb (south), primary tool (right trigger), alternate/rotate (left trigger), ping (D-pad up), tool belt (radial), carry/drop (west), crouch (east), sprint (stick press).
 
 ## Job phase state machine
 

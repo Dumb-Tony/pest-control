@@ -160,7 +160,7 @@ This project can share a universe with other ordinary-work games through recurri
 
 Long-term: chunky, tactile 3D with readable silhouettes, slightly exaggerated building cutaways, worn workwear, and grounded materials. Color carries systems: amber = uncertain evidence, cyan = crew intent, red = active escape/damage, green = secure/captured. Animals are expressive through posture and motion, not humanized faces.
 
-The browser slice now uses a **handcrafted clay/toy worksite viewed over the technician's shoulder**. The property is a walkable open-wall miniature set in a moonlit small-town yard. Chunky, slightly irregular primitives, matte rough materials, soft shadows, warm work lighting, and visibly worn utility colors split the difference between cozy craft and grimy blue-collar realism. Cream plaster and domestic color contrast with dark green workwear, orange safety equipment, stained timber, and dull metal. Evidence glows amber, completed work turns green, danger uses red, and committed animal motion draws a glowing orange arc through the actual set. Room props carry the job story: crib and mobile, garage bench and tires, kitchen cabinets and breakables, damaged soffit and porch.
+The browser slice uses a **handcrafted clay/toy house viewed over the technician's shoulder**. It is no longer presented as an open dollhouse: the player starts on the porch, walks through a real doorway and connected enclosed rooms, and climbs a physical garage ladder into a separate attic under a sloped roof. Chunky, slightly irregular primitives, matte rough materials, soft shadows, warm work lighting, and worn utility colors split the difference between cozy craft and grimy blue-collar realism. Cream plaster and domestic color contrast with dark green workwear, orange safety equipment, stained timber, and dull metal. Evidence glows amber, completed work turns green, danger uses red, and committed animal motion draws a glowing orange arc through the actual building.
 
 ## Audio direction
 
@@ -184,17 +184,17 @@ Authored “incident cards” can add systemic complications—renovation noise,
 
 Included now:
 
-- Six-zone open-wall 3D house set, visible technician, over-the-shoulder follow camera, and one unknown raccoon
+- Connected enclosed 3D house, porch entry, visible technician, over-the-shoulder follow camera, garage ladder, separate attic level, and one unknown raccoon
 - Four evidence clues, three diagnosis choices, confidence feedback
 - Inspect, trap, and barrier tools
 - Preparation phase and live utility-based room-to-room simulation
 - One main capture route and a multi-step occupied-room escape cascade
 - Property damage, customer trust, budget, event log, win/fail outcomes
 - Post-capture exclusion patch and room-specific HEPA cleanup
-- Reversible 3D preparation placement, room-sign targeting, procedural sound cues, job-progress tracker, and share/replay controls
+- Proximity-gated evidence and tool placement, reversible 3D preparation, keyboard/touch movement, procedural sound cues, job-progress tracker, and share/replay controls
 - Restart and a compact tutorial embedded in the work order
 
-Explicitly deferred: collision-heavy avatar navigation, deep repair minigames, inventory weight, multiple animals, customers moving in-world, procedural generation, persistence, networking, save data, freeform 3D physics, and final authored audio.
+Explicitly deferred: deep repair minigames, inventory weight, multiple animals, customers moving in-world, procedural generation, persistence, networking, save data, freeform 3D physics, and final authored audio.
 
 ## Technical approach
 
@@ -263,7 +263,7 @@ Success must be possible in under five minutes after learning the controls, whil
 ## Firm decisions
 
 - Humane capture/removal is the default verb set.
-- The browser prototype uses a visible movable technician and an over-the-shoulder camera in an open-wall miniature set.
+- The browser prototype uses a correctly forward-facing movable technician, over-the-shoulder camera, enclosed connected rooms, proximity interactions, and an explicit ladder transition to the attic.
 - Evidence is imperfect but never arbitrary; the full set supports one defensible diagnosis.
 - Barriers modify graph edges and may redirect danger; they are not universal hard stops.
 - Score meters update during play and the event log names causes.
@@ -296,3 +296,4 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-27:** Separated navigation topology from immediate intent: faint cyan dashed lines show possible connections while a thick orange arrow shows the raccoon's committed move.
 - **2026-08-27:** Replaced the 2D cardboard/cutaway renderer with Three.js r185 after visual-direction review. Locked an over-the-shoulder camera, visible movable technician, handcrafted clay/toy geometry, and a tone between cozy warmth and worksite grime. Kept the graph-based behavior and complete job loop while moving evidence, tools, incidents, route intent, and animal movement into the 3D world.
 - **2026-08-27:** Made floating room signs intentional raycast targets after 3D occlusion testing showed foreground geometry could steal clicks from elevated or rear rooms. Movement adds embodiment; direct signs/floors preserve fast solo planning and touch usability.
+- **2026-08-27:** Rejected the open-dollhouse presentation once the technician became embodied. Rebuilt the property around interior traversal: porch entry, collision walls with wide doorways, connected ground-floor rooms, a modeled garage ladder, and a separately enclosed attic. Evidence and tool use now require the technician to be nearby and on the correct level. Added a touch movement pad and tap-accessible ladder control; corrected the technician model's forward axis.

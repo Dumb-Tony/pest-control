@@ -19,6 +19,10 @@
 - [x] Replace Canvas 2D with a Three.js clay-world renderer, visible technician, and over-the-shoulder camera
 - [x] Move evidence, traps, barriers, raccoon motion, closeout work, and route intent into the 3D scene
 - [x] Add room-sign raycast targets for reliable touch interaction through visual overlap
+- [x] Replace the open-dollhouse composition with enclosed connected rooms and collision-aware walking
+- [x] Add a modeled garage ladder and separate playable attic level
+- [x] Correct technician facing and add keyboard plus touch movement controls
+- [x] Gate evidence and equipment interactions by proximity and floor
 - [ ] Make barriers target door edges explicitly rather than room zones
 - [ ] Add one automated simulation test per acceptance route
 
@@ -127,13 +131,14 @@ All IDs are stable lowercase strings. Saves reference IDs, never array positions
 
 ## Next implementation tasks
 
-1. Add collision volumes, walkable-room transitions, and a short-range interaction prompt without losing direct room-sign accessibility.
-2. Extract the adjacency graph and raccoon scoring into pure functions.
-3. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
-4. Render barriers on exact door edges and show “weakening” before failure.
-5. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
-6. Add clay surface variation and grime decals while keeping all critical colors readable.
-7. Run five blind tests; record camera comfort, first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
+1. Add camera collision/fade handling for tight rooms and large foreground furniture.
+2. Add a contextual interaction reticle that distinguishes evidence, equipment, doors, and the ladder.
+3. Extract the adjacency graph and raccoon scoring into pure functions.
+4. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
+5. Render barriers on exact door edges and show “weakening” before failure.
+6. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
+7. Add clay surface variation and grime decals while keeping all critical colors readable.
+8. Run five blind tests; record camera comfort, first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
 
 ## Telemetry for playtests
 
