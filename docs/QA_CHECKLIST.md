@@ -2,7 +2,10 @@
 
 ## Smoke test
 
-- [ ] Page loads without a blank canvas or console error.
+- [ ] Three.js scene loads from the public HTTPS URL without a blank viewport or console error.
+- [ ] Technician is visible; WASD/arrows move; dragging turns the follow camera.
+- [ ] Clay lighting, room signs, and evidence remain readable at desktop and phone widths.
+- [ ] A room sign selects its labeled room even when elevated or foreground geometry overlaps it.
 - [ ] Briefing advances to investigation.
 - [ ] Evidence markers react to hover/click and log only once.
 - [ ] Diagnosis panel becomes available after two clues.

@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10272b">
   <title>Small Town Pest Control — Something in the Attic</title>
-  <link rel="stylesheet" href="styles.css?v=visual-pass-2">
+  <link rel="stylesheet" href="styles.css?v=clay-3d-2">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
   <main class="app-shell">
@@ -39,8 +46,9 @@
     </ol>
 
     <div class="workspace">
-      <section class="board-panel" aria-label="Interactive cutaway house">
-        <canvas id="gameCanvas" width="960" height="600" aria-label="Cutaway house. Use the tool buttons and click highlighted rooms or evidence."></canvas>
+      <section class="board-panel" aria-label="Interactive three-dimensional house">
+        <div class="viewport-badge"><span>FIELD CAMERA</span><strong>LIVE</strong></div>
+        <canvas id="gameCanvas" aria-label="Stylized three-dimensional house. Move with WASD, drag to turn the camera, and tap evidence or room floors."></canvas>
         <div class="canvas-caption" id="canvasCaption">Customer reports heavy scratching above the second floor after midnight.</div>
       </section>
 
@@ -86,7 +94,7 @@
     </div>
 
     <footer>
-      <p id="shareStatus" aria-live="polite"><strong>Controls:</strong> click to inspect/place · 1–5 tools · Space start · R restart</p>
+      <p id="shareStatus" aria-live="polite"><strong>Controls:</strong> WASD move · drag look · tap interact · 1–5 tools · Space start · R restart</p>
       <button id="restartButton" class="text-button">Restart work order</button>
     </footer>
   </main>
@@ -105,6 +113,6 @@
     </div>
   </div>
 
-  <script src="game.js?v=visual-pass-2"></script>
+  <script type="module" src="game.js?v=clay-3d-4"></script>
 </body>
 </html>

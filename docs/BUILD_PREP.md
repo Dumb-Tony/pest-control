@@ -16,6 +16,9 @@
 - [x] Add visualized sound cues and simple procedural audio
 - [x] Add post-capture exclusion and contamination cleanup closeout
 - [x] Add reversible preparation placement and share/replay controls
+- [x] Replace Canvas 2D with a Three.js clay-world renderer, visible technician, and over-the-shoulder camera
+- [x] Move evidence, traps, barriers, raccoon motion, closeout work, and route intent into the 3D scene
+- [x] Add room-sign raycast targets for reliable touch interaction through visual overlap
 - [ ] Make barriers target door edges explicitly rather than room zones
 - [ ] Add one automated simulation test per acceptance route
 
@@ -63,7 +66,7 @@
 9. Damage and trust change immediately with named causes in the event log.
 10. Capture and escape both reach a clear result screen with grade and restart.
 11. The job is completable in five minutes by an informed player.
-12. The prototype runs from static files with no dependencies or build step.
+12. The prototype runs as a static site with a pinned Three.js CDN module and no build step.
 
 ## Suggested production folder/module structure
 
@@ -90,7 +93,7 @@ pest-control/
       scoring.js
       seeded-random.js
     view/
-      canvas-renderer.js
+      scene3d.js
       hud.js
       input.js
       audio.js
@@ -107,7 +110,7 @@ pest-control/
     QA_CHECKLIST.md
 ```
 
-Keep the first playable in a single `game.js` until rules stabilize. Split only at v0.2, preserving command/event names.
+The first renderer split is complete: `game.js` owns rules/UI and `scene3d.js` owns the Three.js view, camera, movement, and picking. Continue extracting pure simulation modules without moving rule authority into scene objects.
 
 ## Data contracts (draft)
 
@@ -124,13 +127,13 @@ All IDs are stable lowercase strings. Saves reference IDs, never array positions
 
 ## Next implementation tasks
 
-1. Extract the adjacency graph and raccoon scoring into pure functions.
-2. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
-3. Render barriers on exact door edges and show “weakening” before failure.
-4. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
-5. Add a two-choice closeout tradeoff: leave early for time or finish optional restoration for trust.
-6. Run five blind tests; record first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
-7. Update GDD decision log from findings before adding the rat job.
+1. Add collision volumes, walkable-room transitions, and a short-range interaction prompt without losing direct room-sign accessibility.
+2. Extract the adjacency graph and raccoon scoring into pure functions.
+3. Add headless tests for clean capture, nursery breach, kitchen damage, and exterior escape.
+4. Render barriers on exact door edges and show “weakening” before failure.
+5. Add three spatial sound cues (scratch, thump, trap snap) with text equivalents.
+6. Add clay surface variation and grime decals while keeping all critical colors readable.
+7. Run five blind tests; record camera comfort, first-click time, diagnosis confidence, containment cause recall, recovery rate, and session length.
 
 ## Telemetry for playtests
 

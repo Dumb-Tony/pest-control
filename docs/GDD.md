@@ -160,7 +160,7 @@ This project can share a universe with other ordinary-work games through recurri
 
 Long-term: chunky, tactile 3D with readable silhouettes, slightly exaggerated building cutaways, worn workwear, and grounded materials. Color carries systems: amber = uncertain evidence, cyan = crew intent, red = active escape/damage, green = secure/captured. Animals are expressive through posture and motion, not humanized faces.
 
-The browser slice uses a **cozy cutaway diorama inside a municipal field manual**. The property sits in a moonlit small-town yard with chunky roof, room, furniture, and exterior silhouettes. Warm domestic rooms contrast with cool civic UI colors; cream paper, stamped orange actions, dark green workwear tones, and imperfect ink-like shadows make the interface feel handled rather than digital-clean. Evidence glows amber, completed work turns green, danger and failed containment use red, and route intent stays orange. Room props tell the job story before text does: crib and mobile, garage bench and storage, kitchen cabinets and breakables, damaged soffit and porch.
+The browser slice now uses a **handcrafted clay/toy worksite viewed over the technician's shoulder**. The property is a walkable open-wall miniature set in a moonlit small-town yard. Chunky, slightly irregular primitives, matte rough materials, soft shadows, warm work lighting, and visibly worn utility colors split the difference between cozy craft and grimy blue-collar realism. Cream plaster and domestic color contrast with dark green workwear, orange safety equipment, stained timber, and dull metal. Evidence glows amber, completed work turns green, danger uses red, and committed animal motion draws a glowing orange arc through the actual set. Room props carry the job story: crib and mobile, garage bench and tires, kitchen cabinets and breakables, damaged soffit and porch.
 
 ## Audio direction
 
@@ -184,21 +184,21 @@ Authored “incident cards” can add systemic complications—renovation noise,
 
 Included now:
 
-- Six-room cutaway house and one unknown raccoon
+- Six-zone open-wall 3D house set, visible technician, over-the-shoulder follow camera, and one unknown raccoon
 - Four evidence clues, three diagnosis choices, confidence feedback
 - Inspect, trap, and barrier tools
 - Preparation phase and live utility-based room-to-room simulation
 - One main capture route and a multi-step occupied-room escape cascade
 - Property damage, customer trust, budget, event log, win/fail outcomes
 - Post-capture exclusion patch and room-specific HEPA cleanup
-- Reversible preparation placement, procedural sound cues, job-progress tracker, and share/replay controls
+- Reversible 3D preparation placement, room-sign targeting, procedural sound cues, job-progress tracker, and share/replay controls
 - Restart and a compact tutorial embedded in the work order
 
-Explicitly deferred: avatar movement, deep repair minigames, inventory weight, multiple animals, customers moving in-world, procedural generation, persistence, networking, save data, 3D physics, and final authored audio.
+Explicitly deferred: collision-heavy avatar navigation, deep repair minigames, inventory weight, multiple animals, customers moving in-world, procedural generation, persistence, networking, save data, freeform 3D physics, and final authored audio.
 
 ## Technical approach
 
-The prototype is plain HTML/CSS/JavaScript and Canvas 2D with no dependencies or build step. A fixed 960×600 logical canvas scales to available width. Simulation uses a finite state machine plus timed animal decisions. Lightweight sound cues are synthesized with Web Audio and duplicated in captions/logs. Render and simulation are separated conceptually in one file for fast iteration; the next refactor splits data, reducer/state, behavior, renderer, input, and audio.
+The prototype is plain HTML/CSS/JavaScript with Three.js r185 loaded as an ES module from a pinned CDN URL; there is no package install or build step. `game.js` owns the finite state machine, scoring, timed animal decisions, UI, and procedural Web Audio. `scene3d.js` owns WebGL rendering, clay-style procedural geometry, follow camera, avatar movement, raycast picking, lighting, and visual synchronization. The public static deployment is still reproducible from repository root. Local testing requires a simple static HTTP server because browsers do not load module imports reliably from `file:` URLs.
 
 Behavioral variation uses a deterministic seeded PRNG. A `?seed=` query parameter is displayed in the HUD and reproduces decision variation for shared playtests and debugging. Game state is serializable except transient animation time, preparing for replay logging and later multiplayer authority.
 
@@ -225,7 +225,7 @@ Content data should become JSON/ScriptableObjects with stable IDs. Behavior read
 
 ## Unity migration considerations
 
-- Preserve stable IDs, command/event boundary, and data schemas; replace Canvas renderer with scene/prefab views.
+- Preserve stable IDs, command/event boundary, and data schemas; replace Three.js procedural scene objects with Unity scenes/prefabs.
 - Unity authoritative simulation should use fixed ticks. Host authority is acceptable for early 2–5 player co-op; inputs become commands, outcomes become replicated events.
 - Build rooms as volumes and traversal edges as explicit components layered over physics. Do not rely on unconstrained rigidbody chaos for animal navigation.
 - Use NavMesh plus tagged off-mesh links for species movement; utility selection chooses goals/routes.
@@ -263,12 +263,12 @@ Success must be possible in under five minutes after learning the controls, whil
 ## Firm decisions
 
 - Humane capture/removal is the default verb set.
-- The prototype uses a cutaway floor plan, not avatar movement.
+- The browser prototype uses a visible movable technician and an over-the-shoulder camera in an open-wall miniature set.
 - Evidence is imperfect but never arbitrary; the full set supports one defensible diagnosis.
 - Barriers modify graph edges and may redirect danger; they are not universal hard stops.
 - Score meters update during play and the event log names causes.
 - The first slice has one animal because behavior quality is the central risk.
-- No build tool, framework, account, server, or asset download is required.
+- No build tool, framework, account, or application server is required; the browser loads a pinned Three.js ES module from jsDelivr.
 
 ## Open questions
 
@@ -294,3 +294,5 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-25:** Increased the post-nursery-breach reaction window to 2.6 seconds after hands-on testing showed 0.9 seconds was too short to read the warning and deploy an emergency barrier.
 - **2026-08-27:** Established the browser art target as “cozy cutaway diorama inside a municipal field manual.” Added small-town exterior context, room-specific prop storytelling, dimensional house construction, a stronger raccoon silhouette, tactile work-order styling, and glow/shadow hierarchy without introducing external assets or changing gameplay hitboxes.
 - **2026-08-27:** Separated navigation topology from immediate intent: faint cyan dashed lines show possible connections while a thick orange arrow shows the raccoon's committed move.
+- **2026-08-27:** Replaced the 2D cardboard/cutaway renderer with Three.js r185 after visual-direction review. Locked an over-the-shoulder camera, visible movable technician, handcrafted clay/toy geometry, and a tone between cozy warmth and worksite grime. Kept the graph-based behavior and complete job loop while moving evidence, tools, incidents, route intent, and animal movement into the 3D world.
+- **2026-08-27:** Made floating room signs intentional raycast targets after 3D occlusion testing showed foreground geometry could steal clicks from elevated or rear rooms. Movement adds embodiment; direct signs/floors preserve fast solo planning and touch usability.

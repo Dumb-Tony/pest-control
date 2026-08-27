@@ -1,6 +1,6 @@
 # SMALL TOWN PEST CONTROL
 
-A no-build browser vertical slice for a systemic co-op pest-control game.
+A no-build Three.js browser vertical slice for a systemic co-op pest-control game.
 
 ## [Play the public prototype](https://dumb-tony.github.io/pest-control/)
 
@@ -10,7 +10,7 @@ Sending it to someone? Share the [short friend playtest guide](docs/PLAYTEST_GUI
 
 ## Play
 
-Open `index.html` directly in a modern browser, or serve this folder with any static web server. No packages or build step are required.
+Play through the public link, or serve this folder with any static web server. ES modules require an HTTP address rather than opening `index.html` directly; no packages or build step are required.
 
 1. Inspect highlighted evidence in the house.
 2. Choose the animal that best fits the evidence.
@@ -19,7 +19,7 @@ Open `index.html` directly in a modern browser, or serve this folder with any st
 5. Capture it before property damage or customer trust collapses.
 6. Seal the entry point, clean the affected room, and submit the completed job.
 
-Mouse controls are primary. Keyboard shortcuts: `1` inspect, `2` trap, `3` barrier, `4` exclusion patch, `5` HEPA cleanup, `Space` starts containment, and `R` restarts. Click placed equipment during preparation to undo or move it. Buttons and instructions are also exposed as HTML for keyboard and screen-reader use.
+Move the technician with `WASD` or arrow keys, drag the scene to turn the over-the-shoulder camera, and tap glowing evidence or room signs/floors to interact. Keyboard shortcuts: `1` inspect, `2` trap, `3` barrier, `4` exclusion patch, `5` HEPA cleanup, `Space` starts containment, and `R` restarts. Tap placed equipment during preparation to undo or move it. Buttons and instructions are also exposed as HTML for keyboard and screen-reader use.
 
 Add `?seed=your-name` to the playtest URL to reproduce and share the same behavioral variation, for example `https://dumb-tony.github.io/pest-control/?seed=garage-night`.
 
@@ -29,7 +29,8 @@ Use **Copy job link** to send the current seed to a friend. The sound toggle con
 
 - `index.html` — accessible application shell
 - `styles.css` — responsive presentation
-- `game.js` — prototype state, simulation, rendering, and input
+- `game.js` — prototype state, simulation, UI, and job rules
+- `scene3d.js` — Three.js clay-world renderer, avatar, camera, picking, and scene props
 - `docs/GDD.md` — living game design document and decision log
 - `docs/BUILD_PREP.md` — backlog, milestones, acceptance criteria, architecture, and implementation tasks
 - `docs/STATE_AND_CONTROLS.md` — controls and state-machine specification
@@ -38,7 +39,7 @@ Use **Copy job link** to send the current seed to a friend. The sound toggle con
 
 ## Prototype intent
 
-This slice tests the complete solo job: read evidence, shape the animal's route, recover from containment failures, remove it, seal the opening, clean contamination, and settle the job. It intentionally postpones character movement, online multiplayer, procedural houses, persistent economy, and 3D physics.
+This slice tests the complete solo job in a walkable stylized 3D property: read evidence, shape the animal's route, recover from containment failures, remove it, seal the opening, clean contamination, and settle the job. It intentionally postpones online multiplayer, procedural houses, persistent economy, collision-heavy navigation, and freeform 3D physics.
 
 ## Repository and deployment policy
 
