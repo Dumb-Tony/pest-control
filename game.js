@@ -193,7 +193,11 @@
     Object.values(rooms).forEach(r=>drawRoomShell(r,now));drawRoomProps();
     if(state.incidents.nursery){ctx.fillStyle='rgba(34,27,24,.78)';ctx.beginPath();ctx.moveTo(350,178);ctx.lineTo(374,178);ctx.lineTo(387,193);ctx.lineTo(372,201);ctx.lineTo(356,192);ctx.closePath();ctx.fill();line(356,183,340,213,3,'#d95045');}
     if(state.incidents.kitchen){ctx.fillStyle='#e8dac4';for(const [x,y] of [[555,494],[603,482],[521,508]]){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+9,y-9);ctx.lineTo(x+15,y+4);ctx.closePath();ctx.fill();}ctx.fillStyle='rgba(175,91,55,.5)';ctx.beginPath();ctx.ellipse(594,509,29,8,0,0,Math.PI*2);ctx.fill();}
-    if(state.phase==='contain'){ctx.save();ctx.setLineDash([10,8]);ctx.lineWidth=4;ctx.strokeStyle='rgba(245,172,81,.72)';Object.entries(graph).forEach(([a,list])=>list.forEach(b=>{if(b==='outside'||a<b){const p=roomCenter(a),q=roomCenter(b);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}));ctx.restore();}
+    if(state.phase==='contain'){
+      ctx.save();ctx.setLineDash([6,10]);ctx.lineWidth=2;ctx.strokeStyle='rgba(105,194,189,.32)';
+      Object.entries(graph).forEach(([a,list])=>list.forEach(b=>{if(b==='outside'||a<b){const p=roomCenter(a),q=roomCenter(b);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}));ctx.restore();
+      if(state.animal.moving){const p=roomCenter(state.animal.from),q=roomCenter(state.animal.to),angle=Math.atan2(q.y-p.y,q.x-p.x);ctx.save();ctx.setLineDash([12,7]);ctx.lineWidth=5;ctx.strokeStyle='rgba(245,157,74,.92)';ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#f59d4a';ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(q.x-16*Math.cos(angle-.55),q.y-16*Math.sin(angle-.55));ctx.lineTo(q.x-16*Math.cos(angle+.55),q.y-16*Math.sin(angle+.55));ctx.closePath();ctx.fill();ctx.restore();}
+    }
   }
   function drawEvidence(now){
     if(!['investigate','diagnose'].includes(state.phase))return;

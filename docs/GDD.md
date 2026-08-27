@@ -293,3 +293,4 @@ Success must be possible in under five minutes after learning the controls, whil
 - **2026-08-25:** Fixed restart to preserve one animation loop and changed the field log to text-node rendering so user-supplied seeds cannot become HTML.
 - **2026-08-25:** Increased the post-nursery-breach reaction window to 2.6 seconds after hands-on testing showed 0.9 seconds was too short to read the warning and deploy an emergency barrier.
 - **2026-08-27:** Established the browser art target as “cozy cutaway diorama inside a municipal field manual.” Added small-town exterior context, room-specific prop storytelling, dimensional house construction, a stronger raccoon silhouette, tactile work-order styling, and glow/shadow hierarchy without introducing external assets or changing gameplay hitboxes.
+- **2026-08-27:** Separated navigation topology from immediate intent: faint cyan dashed lines show possible connections while a thick orange arrow shows the raccoon's committed move.
